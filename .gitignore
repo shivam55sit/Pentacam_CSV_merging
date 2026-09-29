@@ -1,0 +1,32 @@
+# Environments
+venv/
+.env
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Project specific
+files/
+poppler/
+
+# Data and user generated files
+*.xlsx
+*.csv
+*.pdf
+*.zip
+*.jpg
+*.png
+*.jpeg
+
+# Streamlit
+.streamlit/
