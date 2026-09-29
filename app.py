@@ -819,32 +819,12 @@ def main():
             st.session_state.folder_path = ""
 
         if input_mode == "📁 Local Folder Path":
-            col1, col2 = st.columns([3, 1])
-            with col1:
-                folder_path = st.text_input(
-                    "Folder Path",
-                    value=st.session_state.folder_path,
-                    placeholder=r"C:\Pentacam 1 SSP HYD",
-                    help="Full path to the root folder containing school date-folders.",
-                    label_visibility="collapsed"
-                )
-            with col2:
-                if st.button("Browse...", use_container_width=True):
-                    try:
-                        import tkinter as tk
-                        from tkinter import filedialog
-                        root = tk.Tk()
-                        root.withdraw()
-                        root.wm_attributes('-topmost', 1)
-                        selected_dir = filedialog.askdirectory(master=root)
-                        if selected_dir:
-                            st.session_state.folder_path = selected_dir
-                            st.rerun()
-                    except Exception as e:
-                        st.error("Could not open folder dialog. Please enter path manually.")
-            
-            # Update session state if typed manually
-            st.session_state.folder_path = folder_path
+            folder_path = st.text_input(
+                "Folder Path",
+                placeholder=r"C:\Pentacam 1 SSP HYD",
+                help="Full path to the root folder on the server/local machine.",
+            )
+            st.warning("⚠️ **Note:** This option only works if the app is running on your local computer. Since you deployed to a server, the server cannot access your computer's C: drive. Please use the **Upload ZIP File** option instead.")
         else:
             zip_file = st.file_uploader(
                 "Upload ZIP",
