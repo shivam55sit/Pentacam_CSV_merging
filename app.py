@@ -44,9 +44,11 @@ IDENTIFIER_COLUMNS = [
 PRIMARY_MATCH_COLUMNS = ["Pat-ID:", "D.o.Birth:", "Exam Eye:"]
 
 # Regex that matches folder names like  SCHOOL NAME_DD-MM-YYYY
-# Also handles optional spaces/underscores before the date
+# Also handles optional spaces, underscores, or commas before the date
+# Supports dates with -, _, ., or space as separators, and 2 or 4 digit years
 DATE_FOLDER_PATTERN = re.compile(
-    r"^(?P<school>.+?)[_ ]*(?P<date>\d{2}-\d{2}-\d{4})$"
+    r"^(?P<school>.+?)[_ \-,]*(?P<date>\d{1,2}[-_ .]\d{1,2}[-_ .]\d{2,4})$",
+    re.IGNORECASE
 )
 
 # Regex to strip trailing date from a filename stem
