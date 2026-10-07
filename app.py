@@ -90,6 +90,31 @@ DEFAULT_COLUMN_MAP = {
         "BAD Dam:",
         "BAD D:",
     ],
+    "SUMMARY-LOAD.CSV": [
+        "Error",
+        "Rf F (mm):", "Rs F (mm):", "Rh F (mm):", "Rv F (mm):",
+        "K1 F (D):", "K2 F (D):", "Rm F (mm):", "Km F (D):",
+        "Axis F (flat):", "Astig F (D):",
+        "R Per F (mm)", "R Min (mm)",
+        "Num. Ecc. F:", "Asph. Q F:",
+        "Rf B (mm):", "Rs B (mm):", "Rh B (mm):", "Rv B (mm):",
+        "K1 B (D):", "K2 B (D):", "Rm B (mm):", "Km B (mm):",
+        "Axis B (flat):", "Astig B (D):",
+        "R Per B (mm):", "R Min B (mm):",
+        "Num. Ecc. B:", "Asph. Q B:", "Ecc. Zone:",
+        "Pachy Apex:", "Pachy Pupil:",
+        "Pupil Pos X:", "Pupil Pos Y:",
+        "Pachy Min:", "Pachy Min Pos X:", "Pachy Min Pos Y:",
+        "C.Vol D 3mm:", "C.Vol D 5mm:", "C.Vol D 7mm:", "C.Vol D 10mm:",
+        "ISV:", "IVA:", "KI:", "CKI:", "IHA:", "IHD:",
+        "RSagMin:", "TKC:",
+        "D0mm Pachy", "D2mm Pachy", "D4mm Pachy", "D6mm Pachy", "D8mm Pachy", "D10mm Pachy",
+        "D0mm Prog", "D2mm Prog", "D4mm Prog", "D6mm Prog", "D8mm Prog", "D10mm Prog",
+        "KMax Sagittal Front (D)",
+        "Measuring Head Status:", "Measuring Head Status Text:",
+        "Measuring Head Type:",
+        "3D Scan Status:", "3D Scan Error:",
+    ],
 }
 
 # Non-CSV extensions to filter out
@@ -650,7 +675,8 @@ def process_school(
 
         # Add target data columns
         for col in target_cols_found:
-            extracted[normalize_column_name(col)] = full_df[col].copy()
+            col_name = normalize_column_name(col)
+            extracted[col_name] = full_df[col].copy()
 
         # ── Create normalised match key ────────────────────────────────
         for id_col in IDENTIFIER_COLUMNS:
